@@ -4,6 +4,7 @@ import Vuex from 'vuex';
 import { ModalProgrammatic as Modal } from 'buefy';
 import MusicService from '../services/music';
 import VoteService from '../services/vote';
+import ResultService from '../services/result';
 
 import SuccessVote from '../components/atoms/SuccessVote.vue';
 
@@ -12,11 +13,19 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     musics: [],
+    rank: [],
+    users: [],
   },
 
   mutations: {
     SAVE_MUSICS(state, musics) {
       state.musics = musics;
+    },
+    SAVE_RANK(state, rank) {
+      state.rank = rank;
+    },
+    SAVE_USERS(state, users) {
+      state.users = users;
     },
   },
 
@@ -34,8 +43,13 @@ export default new Vuex.Store({
         trapFocus: true,
       });
     },
-  },
-
-  modules: {
+    async getRank({ commit }) {
+      const rank = await ResultService.getRank();
+      commit('SAVE_RANK', rank);
+    },
+    async getUsersContributions({ commit }) {
+      const contributions = await ResultService.getUsersContributions();
+      commit('SAVE_USERS', contributions);
+    },
   },
 });

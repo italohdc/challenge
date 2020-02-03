@@ -5,6 +5,7 @@
       :key="music.id"
       :music="music"
       :index="index"
+      :hideDelete="hideDelete"
       class="music-card"
       @delete="deleteItem(index)"
     />
@@ -18,6 +19,7 @@ export default {
   name: 'MusicList',
   props: {
     musics: Array,
+    hideDelete: Boolean,
   },
   components: {
     MusicCard,

@@ -8,6 +8,7 @@
           <p class="subtitle is-7">{{ music.artists }}</p>
         </div>
         <b-button
+          v-if="!hideDelete"
           icon-left="close"
           type="is-danger"
           outlined
@@ -26,6 +27,7 @@ export default {
   props: {
     music: Object,
     index: Number,
+    hideDelete: Boolean,
   },
 };
 </script>
@@ -33,6 +35,8 @@ export default {
 <style lang="scss" scoped>
 .card {
   border-radius: 5px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .card-content {
