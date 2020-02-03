@@ -1,4 +1,3 @@
-const uniqid = require('uniqid');
 const db = require('../datasource');
 
 class VoteService {
@@ -15,7 +14,6 @@ class VoteService {
       if (!userNickname) throw new Error("Parameter 'nickname' in 'user' is not defined");
 
       const vote = {
-        id: uniqid(),
         music_id: musicID,
         user_nickname: userNickname,
       };
@@ -28,6 +26,21 @@ class VoteService {
       db.put(requestParams, (err) => {
         if (err) reject(err);
         else resolve(vote);
+      });
+    });
+  }
+
+  getAll() {
+    return new Promise((resolve, reject) => {
+      const requestParams = {
+        TableName: this.tableName,
+      };
+
+      db.scan(requestParams, (err, data) => {
+        if (err) reject(err);
+
+        if (data.Items) resolve(data.Items);
+        else resolve(null);
       });
     });
   }

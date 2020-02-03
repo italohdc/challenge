@@ -4,9 +4,9 @@ module.exports = {
       TableName: 'musics',
       KeySchema: [
         { AttributeName: 'id', KeyType: 'HASH' },
-        { AttributeName: 'votes', KeyType: 'RANGE' },
       ],
       AttributeDefinitions: [
+        { AttributeName: 'votes', AttributeType: 'N' },
         { AttributeName: 'name', AttributeType: 'S' },
         { AttributeName: 'artists', AttributeType: 'S' },
         { AttributeName: 'genre', AttributeType: 'S' },
@@ -28,8 +28,7 @@ module.exports = {
     {
       TableName: 'users',
       KeySchema: [
-        { AttributeName: 'id', KeyType: 'HASH' },
-        { AttributeName: 'nickname', KeyType: 'RANGE' },
+        { AttributeName: 'nickname', KeyType: 'HASH' },
       ],
       AttributeDefinitions: [
         { AttributeName: 'hasVoted', AttributeType: 'B' },
@@ -38,11 +37,8 @@ module.exports = {
     {
       TableName: 'votes',
       KeySchema: [
-        { AttributeName: 'id', KeyType: 'HASH' },
+        { AttributeName: 'user_nickname', KeyType: 'HASH' },
         { AttributeName: 'music_id', KeyType: 'RANGE' },
-      ],
-      AttributeDefinitions: [
-        { AttributeName: 'user_nickname', AttributeType: 'S' },
       ],
     },
   ],
