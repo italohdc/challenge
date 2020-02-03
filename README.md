@@ -53,9 +53,11 @@ The models are organized as following:
 
 #### music
 
-| id            |
-|---------------|
-| partition_key |
+| id            | votes  |
+|---------------|--------|
+| partition_key | Number |
+
+> 'vote' is incremented every time there's a new vote
 
 #### user
 
