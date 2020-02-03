@@ -28,7 +28,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   background-color: #f0f0f0;
-  min-height: 100%;
+  min-height: 100vh;
 }
 
 #nav {

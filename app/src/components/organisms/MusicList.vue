@@ -4,6 +4,7 @@
       v-for="(music, index) in musics"
       :key="music.id"
       :music="music"
+      :index="index"
       class="music-card"
       @delete="deleteItem(index)"
     />

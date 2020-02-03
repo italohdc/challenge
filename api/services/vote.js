@@ -5,7 +5,7 @@ class VoteService {
     this.tableName = 'votes';
   }
 
-  put(user, music) {
+  put(user, music, position) {
     return new Promise((resolve, reject) => {
       const musicID = music && music.id;
       if (!musicID) throw new Error("Parameter 'id' in 'music' is not defined");
@@ -16,6 +16,7 @@ class VoteService {
       const vote = {
         music_id: musicID,
         user_nickname: userNickname,
+        position,
       };
 
       const requestParams = {

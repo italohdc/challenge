@@ -15,7 +15,7 @@ module.exports = {
 
     const newUser = await userService.put({ nickname, hasVoted: false });
 
-    const votePromises = musics.map((music) => voteService.put(newUser, { id: music }));
+    const votePromises = musics.map((music, index) => voteService.put(newUser, { id: music }, index));
     const incrementPromises = musics.map((music) => musicService.incrementVote({ id: music }));
 
     try {

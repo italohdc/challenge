@@ -40,6 +40,9 @@ module.exports = {
         { AttributeName: 'music_id', KeyType: 'HASH' },
         { AttributeName: 'user_nickname', KeyType: 'RANGE' },
       ],
+      AttributeDefinitions: [
+        { AttributeName: 'position', AttributeType: 'N' },
+      ],
     },
   ],
 };
