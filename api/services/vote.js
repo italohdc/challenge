@@ -37,7 +37,32 @@ class VoteService {
       };
 
       db.scan(requestParams, (err, data) => {
-        if (err) reject(err);
+        if (err) return reject(err);
+
+        if (data.Items) resolve(data.Items);
+        else resolve(null);
+      });
+    });
+  }
+
+  filterByMusic(music) {
+    return new Promise((resolve, reject) => {
+      const musicID = music && music.id;
+      if (!musicID) throw new Error("Parameter 'id' in 'music' is not defined");
+
+      const requestParams = {
+        TableName: this.tableName,
+        KeyConditionExpression: '#music = :music_id',
+        ExpressionAttributeNames: {
+          '#music': 'music_id',
+        },
+        ExpressionAttributeValues: {
+          ':music_id': musicID,
+        },
+      };
+
+      db.query(requestParams, (err, data) => {
+        if (err) return reject(err);
 
         if (data.Items) resolve(data.Items);
         else resolve(null);

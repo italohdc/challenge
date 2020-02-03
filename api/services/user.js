@@ -39,7 +39,7 @@ class UserService {
       };
 
       db.get(requestParams, (err, data) => {
-        if (err) reject(err);
+        if (err) return reject(err);
 
         if (data && data.Item) resolve(data.Item);
         else resolve(null);
@@ -54,8 +54,10 @@ class UserService {
       };
 
       db.scan(requestParams, (err, data) => {
-        if (err) reject(err);
-        else resolve(data);
+        if (err) return reject(err);
+
+        if (data.Items) resolve(data.Items);
+        else resolve(null);
       });
     });
   }

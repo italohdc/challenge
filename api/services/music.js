@@ -28,7 +28,7 @@ class MusicService {
       };
 
       db.scan(requestParams, (err, data) => {
-        if (err) reject(err);
+        if (err) return reject(err);
 
         if (data.Items) resolve(data.Items);
         else resolve(null);
@@ -48,7 +48,7 @@ class MusicService {
       };
 
       db.get(requestParams, (err, data) => {
-        if (err) reject(err);
+        if (err) return reject(err);
 
         if (data.Item) resolve(data.Item);
         else resolve(null);

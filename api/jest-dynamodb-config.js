@@ -37,8 +37,8 @@ module.exports = {
     {
       TableName: 'votes',
       KeySchema: [
-        { AttributeName: 'user_nickname', KeyType: 'HASH' },
-        { AttributeName: 'music_id', KeyType: 'RANGE' },
+        { AttributeName: 'music_id', KeyType: 'HASH' },
+        { AttributeName: 'user_nickname', KeyType: 'RANGE' },
       ],
     },
   ],

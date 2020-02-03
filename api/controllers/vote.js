@@ -18,7 +18,11 @@ module.exports = {
     const votePromises = musics.map((music) => voteService.put(newUser, { id: music }));
     const incrementPromises = musics.map((music) => musicService.incrementVote({ id: music }));
 
-    Promise.all([...votePromises, ...incrementPromises]);
+    try {
+      Promise.all([...votePromises, ...incrementPromises]);
+    } catch (err) {
+      return res.status(500).send({ err, msg: 'An error ocurred when trying to compute votes. Try again!' });
+    }
 
     await userService.put({ nickname, hasVoted: true });
 
