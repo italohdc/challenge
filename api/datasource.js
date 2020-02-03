@@ -8,8 +8,9 @@ const config = {
 };
 
 AWS.config.update({
-  accessKeyId: 'ACCESS_KEY',
-  region: 'REGION',
+  accessKeyId: 'AKIA5WYRPAWJXGFEHTNU',
+  secretAccessKey: process.env.AWS_DYNAMODB_KEY,
+  region: 'us-east-1',
 });
 
 const db = new DocumentClient(config);

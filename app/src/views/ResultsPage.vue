@@ -19,7 +19,9 @@
     </div>
 
     <h3 class="title is-4 bigger-margin-top">Users Contributions</h3>
-    <p class="subtitle is-6 minimal-margin-bottom">Most rated musics</p>
+    <p class="subtitle is-6 minimal-margin-bottom">
+      How many musics the user rated that are on TOP 5
+    </p>
     <b-table
       :data="users"
       :columns="columns"

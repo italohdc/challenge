@@ -90,7 +90,6 @@ export default {
       } catch (err) {
         this.isVoting = false;
         this.errorMsg = err;
-        console.error(err);
       }
       this.isVoting = false;
     },
@@ -100,7 +99,11 @@ export default {
       musics: state => state.musics,
     }),
     filteredMusic() {
-      const musics = this.musics || [];
+      let musics = this.musics || [];
+      musics = musics.map(music => ({
+        ...music,
+        name: `${music.name} - ${music.artists}`,
+      }));
       return musics.filter(music => music.name
         .toString()
         .toLowerCase()
